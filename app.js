@@ -5,20 +5,21 @@ const app = express();
 const pool = require('./db/pool');
 
 const path = require("node:path");
+const { render } = require('ejs');
 
 // HTML
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 // CSS
-const assetsPath = path.join(__dirname, "public");
+const assetsPath = path.join(__dirname, "src");
 app.use(express.static(assetsPath));
 
 app.use(express.urlencoded({ extended: true }));
 
 // ROUTES
 app.get('/', (req, res) => {
-
+    res.render('index');
 });
 
 // SERVER

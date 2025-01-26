@@ -1,7 +1,16 @@
 <html>
   <head>
-    <title></title>
-  </html>
+    <title>Games Store</title>
+    <link rel="stylesheet" href="output.css">
+  </head>
   <body>
+    <div class="flex h-screen">
+      <div class="flex-1 bg-red-500">
+        <%- include('sidebar') %>
+      </div>
+      <div class="flex-5 bg-blue-500">
+        <%- include('content') %>
+      </div>
+    </div>
   </body>
 </html>
