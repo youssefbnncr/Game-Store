@@ -1,7 +1,16 @@
 <html>
   <head>
+    <link rel="stylesheet" href="output.css">
   </head>
   <body>
     <h1>Categories</h1>
+    <button id="addbtn">Add</button>
+    <script>
+      const addbtn = document.getElementById("addbtn");
+      const cform = document.getElementById("cform");
+      addbtn.addEventListener("click",()=>{
+        cform.classList.remove("hidden");
+      })
+    </script>
   </body>
 </html>
