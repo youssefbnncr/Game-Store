@@ -18,9 +18,17 @@ app.use(express.static(assetsPath));
 app.use(express.urlencoded({ extended: true }));
 
 // ROUTES
-app.get('/', (req, res) => {
-    res.render('index');
+app.get('/', async (req, res) => {
+    const result = await pool.query('SELECT * FROM Categories');
+    const categories = result.rows;
+    res.render('index',{categories});
 });
+
+app.post('/new-cat',async (req,res)=>{
+    const {name} = req.body;
+    await pool.query('INSERT INTO categories (name) VALUES ($1) RETURNING *',[name]);
+    res.redirect("/");
+})
 
 // SERVER
 const port = 3000;

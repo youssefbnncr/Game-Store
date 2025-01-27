@@ -4,6 +4,11 @@
   </head>
   <body>
     <h1>Categories</h1>
+    <br>
+      <% categories.forEach(categorie => { %>
+        <h2><%- categorie.name %></h2>
+      <% }) %>
+    <br>
     <button id="addbtn">Add</button>
     <script>
       const addbtn = document.getElementById("addbtn");
@@ -12,5 +17,4 @@
         cform.classList.remove("hidden");
       })
     </script>
-  </body>
 </html>
