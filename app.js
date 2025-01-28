@@ -30,6 +30,18 @@ app.post('/new-cat',async (req,res)=>{
     res.redirect("/");
 })
 
+app.post('/:id', async (req,res)=>{
+    const id = req.params.id;
+    await pool.query('DELETE FROM categories WHERE id = ($1)',[id]);
+    res.redirect('/');
+})
+
+app.post('/:name', async (req,res)=>{
+    const name = req.params.name;
+    await pool.query('UPDATE categories SET name = $1 Where name = $2',[name],[newName]);
+    res.redirect('/');
+})
+
 // SERVER
 const port = 3000;
 app.listen(port, () => {

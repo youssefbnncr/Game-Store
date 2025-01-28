@@ -6,7 +6,10 @@
     <h1>Categories</h1>
     <br>
       <% categories.forEach(categorie => { %>
-        <h2><%- categorie.name %> <button id="<%- categorie.id %>" class="delete">D</button></h2>
+        <h2><%- categorie.name %>
+          <form action="/<%- categorie.id %>" method="post" class="inline"><button type="submit">D</button></form>
+          <form action="/<%- categorie.name %>" method="post" class="inline"><button type="submit">M</button></form>
+        </h2>
       <% }) %>
     <br>
     <button id="addbtn">Add</button>
@@ -15,14 +18,6 @@
       const cform = document.getElementById("cform");
       addbtn.addEventListener("click",()=>{
         cform.classList.remove("hidden");
-      });
-
-      const dltBtns = document.querySelectorAll(".delete");
-      dltBtns.forEach(dltBtn => {
-        dltBtn.addEventListener("click",async ()=>{
-          const id = dltBtn.id;
-          await pool.query(`DELETE FROM categories WHERE id=${id}`)
-        })
       });
     </script>
 </html>
