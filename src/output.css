@@ -566,14 +566,26 @@
   .table {
     display: table;
   }
-  .h-\[300px\] {
-    height: 300px;
+  .h-\[80px\] {
+    height: 80px;
+  }
+  .h-\[100px\] {
+    height: 100px;
+  }
+  .h-\[200px\] {
+    height: 200px;
+  }
+  .h-\[400px\] {
+    height: 400px;
   }
   .h-screen {
     height: 100vh;
   }
-  .w-\[600px\] {
-    width: 600px;
+  .w-\[180px\] {
+    width: 180px;
+  }
+  .w-\[200px\] {
+    width: 200px;
   }
   .flex-1 {
     flex: 1;
@@ -613,11 +625,11 @@
   .bg-blue-300 {
     background-color: var(--color-blue-300);
   }
+  .bg-gray-200 {
+    background-color: var(--color-gray-200);
+  }
   .bg-red-200 {
     background-color: var(--color-red-200);
-  }
-  .bg-white {
-    background-color: var(--color-white);
   }
   .underline {
     text-decoration-line: underline;

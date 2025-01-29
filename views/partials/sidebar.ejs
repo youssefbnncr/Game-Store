@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="output.css">
+  </head>
+  <body>
+    <h1>Categories</h1>
+    <br>
+      <% categories.forEach(categorie => { %>
+        <h2>
+          <%- categorie.name %>
+          <form action="/<%- categorie.id %>" method="post" class="inline"><button type="submit">D</button></form>
+          <form action="/<%- categorie.name %>" method="post" class="inline"><button type="submit">M</button></form>
+        </h2>
+      <% }) %>
+    <br>
+    <div class="h-[80px] w-[180px] bg-gray-200 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden" id="form">
+      <form action="/add" method="post">
+        <input type="text" name="name" placeholder="Category name">
+        <button type="submit">Add</button>
+      </form>
+    </div>
+    <button onclick="displayForm()">Add</button>
+    <script>
+      function displayForm() {
+        document.getElementById('form').classList.toggle('hidden');
+      }
+    </script>
+  </body>
+</html>

@@ -5,14 +5,11 @@
   </head>
   <body>
     <div class="flex h-screen">
-      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-white hidden" id="cform">
-        <%- include('cform') %>
-      </div>
       <div class="flex-1 bg-red-200">
-        <%- include('sidebar') %>
+        <%- include('./partials/sidebar') %>
       </div>
       <div class="flex-5 bg-blue-300">
-        <%- include('content') %>
+        <%- include('./partials/content') %>
       </div>
     </div>
   </body>
