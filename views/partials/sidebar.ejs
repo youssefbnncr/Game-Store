@@ -9,20 +9,35 @@
         <h2>
           <%- categorie.name %>
           <form action="/<%- categorie.id %>" method="post" class="inline"><button type="submit">D</button></form>
-          <form action="/<%- categorie.name %>" method="post" class="inline"><button type="submit">M</button></form>
+          <button onclick="displayFormModify('<%- categorie.name %>')">M</button>
         </h2>
       <% }) %>
     <br>
-    <div class="h-[80px] w-[180px] bg-gray-200 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden" id="form">
+    <div class="h-[80px] w-[180px] bg-gray-200 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden z-20" id="formAdd">
       <form action="/add" method="post">
         <input type="text" name="name" placeholder="Category name">
         <button type="submit">Add</button>
       </form>
     </div>
+
+    <div class="h-[80px] w-[180px] bg-gray-200 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden z-10" id="formModify">
+      <form action="/changeCategoryName" method="get" class="inline">
+        <input type="hidden" name="oldName">
+        <input type="text" name="newName" placeholder="New name">
+        <button type="submit">Change</button>
+      </form>
+    </div>
     <button onclick="displayForm()">Add</button>
     <script>
       function displayForm() {
-        document.getElementById('form').classList.toggle('hidden');
+        document.getElementById('formAdd').classList.toggle('hidden');
+      }
+      function displayFormModify(oldName) {
+        const formModify = document.getElementById('formModify');
+        const oldNameInput = formModify.querySelector('input[name="oldName"]');
+
+        oldNameInput.value = oldName;
+        formModify.classList.toggle('hidden');
       }
     </script>
   </body>

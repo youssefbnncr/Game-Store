@@ -16,8 +16,15 @@ async function insertName(req,res) {
   res.redirect('/');
 }
 
+async function modifyName(req,res) {
+  const {oldName , newName} = req.query;
+  await db.modifyName(newName, oldName);
+  res.redirect('/')
+}
+
 module.exports = {
   renderIndex,
   deleteName,
-  insertName
+  insertName,
+  modifyName
 }

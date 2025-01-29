@@ -5,9 +5,13 @@ async function insertName(name) {
 }
 
 async function getName() {
-  const result = await pool.query('SELECT * FROM Categories');
+  const result = await pool.query('SELECT * FROM categories');
   const categories = result.rows;
   return categories;
+}
+
+async function modifyName(newName, oldName) {
+  await pool.query('UPDATE categories SET name = ($1) WHERE name = ($2)',[newName, oldName]);
 }
 
 async function deleteName(id){
@@ -17,5 +21,6 @@ async function deleteName(id){
 module.exports = {
   insertName,
   getName,
-  deleteName
+  deleteName,
+  modifyName
 }
