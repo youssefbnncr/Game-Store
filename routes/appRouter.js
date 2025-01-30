@@ -3,9 +3,10 @@ const appRouter = Router();
 
 const appController = require('../controllers/appController');
 
-appRouter.get('/',appController.renderIndex);
+appRouter.get('/(:id)?',appController.renderIndex);
 appRouter.post('/add',appController.insertName);
 appRouter.get('/changeCategoryName',appController.modifyName);
 appRouter.post('/:id',appController.deleteName);
+
 
 module.exports = appRouter;

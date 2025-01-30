@@ -5,11 +5,11 @@
   <body>
     <h1>Categories</h1>
     <br>
-      <% categories.forEach(categorie => { %>
+      <% categories.forEach(category => { %>
         <h2>
-          <%- categorie.name %>
-          <form action="/<%- categorie.id %>" method="post" class="inline"><button type="submit">D</button></form>
-          <button onclick="displayFormModify('<%- categorie.name %>')">M</button>
+          <a href="/<%- category.id %>"><%- category.name %></a>
+          <form action="/<%- category.id %>" method="post" class="inline"><button type="submit">D</button></form>
+          <button onclick="displayFormModify('<%- category.name %>')">M</button>
         </h2>
       <% }) %>
     <br>
@@ -34,9 +34,10 @@
       }
       function displayFormModify(oldName) {
         const formModify = document.getElementById('formModify');
-        const oldNameInput = formModify.querySelector('input[name="oldName"]');
 
+        const oldNameInput = formModify.querySelector('input[name="oldName"]');
         oldNameInput.value = oldName;
+
         formModify.classList.toggle('hidden');
       }
     </script>
