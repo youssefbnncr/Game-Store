@@ -4,5 +4,10 @@
   </head>
   <body>
     <h1>Items</h1>
+    <ul>
+      <% items.forEach(item => { %>
+        <li><%= item.name %> - <%= item.description %> (Year: <%= item.year %>)</li>
+      <% }) %>
+    </ul>
   </body>
 </html>

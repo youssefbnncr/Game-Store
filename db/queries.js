@@ -17,9 +17,15 @@ async function deleteCategory(categoryID){
   await pool.query('DELETE FROM categories WHERE id = ($1)',[categoryID]);
 }
 
+async function getItems(categoryID) {
+  const result = await pool.query('SELECT items.id, items.name, items.description, items.year, items.quantity FROM items INNER JOIN categories ON items.category_id = categories.id WHERE categories.id = ($1)',[categoryID]);
+  return result.rows;
+}
+
 module.exports = {
   addCategory,
   getCategories,
   deleteCategory,
-  editCategory
+  editCategory,
+  getItems
 }

@@ -2,7 +2,9 @@ const db = require('../db/queries');
 
 async function renderIndex(req,res) {
   const categories = await db.getCategories();
-  res.render('index',{categories});
+  const id = req.params.id || null;
+  const items = await db.getItems(id);
+  res.render('index',{categories,items});
 }
 
 async function deleteName(req,res) {
@@ -21,6 +23,8 @@ async function modifyName(req,res) {
   await db.editCategory(newName, oldName);
   res.redirect('/')
 }
+
+
 
 module.exports = {
   renderIndex,
