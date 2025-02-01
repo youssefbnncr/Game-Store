@@ -8,7 +8,7 @@
       <% categories.forEach(category => { %>
         <h2>
           <a href="/<%- category.id %>"><%- category.name %></a>
-          <form action="/<%- category.id %>" method="post" class="inline"><button type="submit">D</button></form>
+          <form action="/delete/<%- category.id %>" method="post" class="inline"><button type="submit">D</button></form>
           <button onclick="displayFormModify('<%- category.name %>')">M</button>
         </h2>
       <% }) %>
@@ -16,7 +16,7 @@
     <div class="h-[80px] w-[180px] bg-gray-200 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden z-20" id="formAdd">
       <form action="/add" method="post">
         <input type="text" name="name" placeholder="Category name">
-        <button type="submit">Add</button>
+        <button type="submit" class="border-2 border-amber-950 bg-amber-500 px-0.5">Add</button>
       </form>
     </div>
 
@@ -27,7 +27,7 @@
         <button type="submit">Change</button>
       </form>
     </div>
-    <button onclick="displayForm()">Add</button>
+    <button onclick="displayForm()" class="border-2 border-amber-950 bg-amber-500 px-0.5 absolute bottom-0.5 left-0.5">Add</button>
     <script>
       function displayForm() {
         document.getElementById('formAdd').classList.toggle('hidden');

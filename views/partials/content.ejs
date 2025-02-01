@@ -9,5 +9,22 @@
         <li><%= item.name %> - <%= item.description %> (Year: <%= item.year %>)</li>
       <% }) %>
     </ul>
+    <div class="bg-gray-200 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden z-30" id="itemAdd">
+      <form action="/addItem" method="post">
+        <input type="hidden" name="category_id" value="<%= id %>"> <!-- Fix: Passed category ID -->
+        <input type="text" name="name" placeholder="name">
+        <br><input type="text" name="description" placeholder="description">
+        <br><input type="text" name="year" placeholder="year">
+        <br><input type="text" name="quantity" placeholder="quantity">
+        <br><button type="submit" class="border-2 border-amber-950 bg-amber-500 px-0.5">Add</button>
+      </form>
+    </div>
+
+    <script>
+      function itemAdd() {
+        document.getElementById('itemAdd').classList.toggle('hidden');
+      }
+    </script>
+    <button class="border-2 border-amber-950 bg-amber-500 px-0.5 absolute bottom-0.5 right-0.5" onclick="itemAdd()">Add</button>
   </body>
 </html>
