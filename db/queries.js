@@ -36,6 +36,13 @@ async function deleteItem(itemId) {
   await pool.query('DELETE FROM items WHERE id = $1', [itemId]);
 }
 
+async function updateItem(itemId, name, description, year, quantity) {
+  await pool.query(
+    'UPDATE items SET name = $1, description = $2, year = $3, quantity = $4 WHERE id = $5',
+    [name, description, year, quantity, itemId]
+  );
+}
+
 
 module.exports = {
   addCategory,
@@ -44,5 +51,6 @@ module.exports = {
   editCategory,
   getItems,
   insertItems,
-  deleteItem
+  deleteItem,
+  updateItem
 };

@@ -6,10 +6,27 @@
     <h1>Items</h1>
     <ul>
       <% items.forEach(item => { %>
-        <li><%= item.quatity %> - <%= item.name %> - <%= item.description %> (Year: <%= item.year %>)</li>
-        <form action="/deleteItem/<%- item.id %>" method="post" class="inline"><button type="submit">D</button></form>
-        <% }) %>
+        <li>
+          <%= item.quantity %> - <%= item.name %> - <%= item.description %> (Year: <%= item.year %>)
+          <form action="/deleteItem/<%= item.id %>" method="post" class="inline">
+            <button type="submit">D</button>
+          </form>
+          <button onclick="showModifyItemForm('<%= item.id %>', '<%= item.name %>', '<%= item.description %>', '<%= item.year %>', '<%= item.quantity %>')">M</button>
+        </li>
+      <% }) %>
     </ul>
+
+    <div class="bg-gray-200 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden z-30 p-4" id="modifyItemForm">
+      <form id="modifyItemFormElement" method="post">
+        <input type="text" name="name" placeholder="Name">
+        <br><input type="text" name="description" placeholder="Description">
+        <br><input type="text" name="year" placeholder="Year">
+        <br><input type="text" name="quantity" placeholder="Quantity">
+        <br><button type="submit" class="border-2 border-amber-950 bg-amber-500 px-0.5">Modify</button>
+      </form>
+      <button onclick="hideModifyItemForm()" class="border-2 border-red-600 bg-red-400 px-0.5 mt-2">Cancel</button>
+    </div>
+
     <div class="bg-gray-200 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden z-30" id="itemAdd">
       <form action="/addItem" method="post">
         <input type="hidden" name="category_id" value="<%= id %>">
@@ -25,7 +42,22 @@
       function itemAdd() {
         document.getElementById('itemAdd').classList.toggle('hidden');
       }
+
+      function showModifyItemForm(id, name, description, year, quantity) {
+        const form = document.getElementById('modifyItemFormElement');
+        form.action = '/modifyItem/' + id;
+        form.querySelector('input[name="name"]').value = name;
+        form.querySelector('input[name="description"]').value = description;
+        form.querySelector('input[name="year"]').value = year;
+        form.querySelector('input[name="quantity"]').value = quantity;
+        document.getElementById('modifyItemForm').classList.remove('hidden');
+      }
+
+      function hideModifyItemForm() {
+        document.getElementById('modifyItemForm').classList.add('hidden');
+      }
     </script>
+
     <button class="border-2 border-amber-950 bg-amber-500 px-0.5 absolute bottom-0.5 right-0.5" onclick="itemAdd()">Add</button>
   </body>
 </html>

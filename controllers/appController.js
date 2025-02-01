@@ -47,6 +47,16 @@ async function deleteItem(req, res) {
   res.redirect('back');
 }
 
+async function modifyItem(req, res) {
+  const itemId = parseInt(req.params.id, 10);
+  const { name, description, year, quantity } = req.body;
+
+  if (!isNaN(itemId)) {
+    await db.updateItem(itemId, name, description, year, quantity);
+  }
+  res.redirect('back');
+}
+
 
 module.exports = {
   renderIndex,
@@ -54,5 +64,6 @@ module.exports = {
   insertName,
   modifyName,
   insertItem,
-  deleteItem
+  deleteItem,
+  modifyItem
 };

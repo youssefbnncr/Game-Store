@@ -575,6 +575,9 @@
   .z-30 {
     z-index: 30;
   }
+  .mt-2 {
+    margin-top: calc(var(--spacing) * 2);
+  }
   .block {
     display: block;
   }
@@ -647,6 +650,9 @@
   .border-amber-950 {
     border-color: var(--color-amber-950);
   }
+  .border-red-600 {
+    border-color: var(--color-red-600);
+  }
   .bg-amber-500 {
     background-color: var(--color-amber-500);
   }
@@ -658,6 +664,12 @@
   }
   .bg-red-200 {
     background-color: var(--color-red-200);
+  }
+  .bg-red-400 {
+    background-color: var(--color-red-400);
+  }
+  .p-4 {
+    padding: calc(var(--spacing) * 4);
   }
   .px-0 {
     padding-inline: calc(var(--spacing) * 0);
