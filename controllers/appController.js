@@ -35,15 +35,24 @@ async function insertItem(req, res) {
   if (!category_id) {
     return res.status(400).send('Category ID is required');
   }
-
   await db.insertItems(name, description, year, quantity, category_id);
   res.redirect(`/${category_id}`);
 }
+
+async function deleteItem(req, res) {
+  const itemId = parseInt(req.params.id, 10);
+  if (!isNaN(itemId)) {
+    await db.deleteItem(itemId);
+  }
+  res.redirect('back');
+}
+
 
 module.exports = {
   renderIndex,
   deleteName,
   insertName,
   modifyName,
-  insertItem
+  insertItem,
+  deleteItem
 };

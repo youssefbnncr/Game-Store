@@ -32,11 +32,17 @@ async function insertItems(name, description, year, quantity, category_id) {
   );
 }
 
+async function deleteItem(itemId) {
+  await pool.query('DELETE FROM items WHERE id = $1', [itemId]);
+}
+
+
 module.exports = {
   addCategory,
   getCategories,
   deleteCategory,
   editCategory,
   getItems,
-  insertItems
+  insertItems,
+  deleteItem
 };

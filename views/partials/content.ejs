@@ -6,12 +6,13 @@
     <h1>Items</h1>
     <ul>
       <% items.forEach(item => { %>
-        <li><%= item.name %> - <%= item.description %> (Year: <%= item.year %>)</li>
-      <% }) %>
+        <li><%= item.quatity %> - <%= item.name %> - <%= item.description %> (Year: <%= item.year %>)</li>
+        <form action="/deleteItem/<%- item.id %>" method="post" class="inline"><button type="submit">D</button></form>
+        <% }) %>
     </ul>
     <div class="bg-gray-200 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden z-30" id="itemAdd">
       <form action="/addItem" method="post">
-        <input type="hidden" name="category_id" value="<%= id %>"> <!-- Fix: Passed category ID -->
+        <input type="hidden" name="category_id" value="<%= id %>">
         <input type="text" name="name" placeholder="name">
         <br><input type="text" name="description" placeholder="description">
         <br><input type="text" name="year" placeholder="year">
